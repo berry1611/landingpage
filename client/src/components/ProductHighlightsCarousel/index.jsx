@@ -37,7 +37,7 @@ const ProductHighlightCarousel = () => {
 
   return (
     <Box>
-      <Carousel animation="slide" duration={1000} interval={3000}>
+      <Carousel animation="slide" duration={1000} interval={5000}>
         {displayItems(products)}
       </Carousel>
     </Box>

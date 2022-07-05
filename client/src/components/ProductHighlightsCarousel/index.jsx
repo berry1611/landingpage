@@ -15,8 +15,6 @@ const ProductHighlightCarousel = () => {
       column = 4;
     } else if (screenSize > 960) {
       column = 3;
-    } else if (screenSize > 600) {
-      column = 2;
     } else {
       column = 1;
     }

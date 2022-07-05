@@ -10,7 +10,7 @@ const ProductHighlightCarousel = () => {
   const displayItems = (products) => {
     const result = [];
     let column;
-    let screenSize = window.innerHeight;
+    let screenSize = window.innerWidth;
     if (screenSize > 1280) {
       column = 4;
     } else if (screenSize > 960) {

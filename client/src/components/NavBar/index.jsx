@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar } from '@mui/material';
+import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar, IconButton, Menu, Drawer } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../../assets/icons/logo.svg';
 import { LOGOUT } from '../../state/action-types/actionTypes';
 import styles from './styles';
 
 const NavBar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [openDrawer, setOpenDrawer] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,14 +19,18 @@ const NavBar = () => {
     navigate(0);
   };
 
+  const handleToggleDrawer = () => {
+    setOpenDrawer(!openDrawer);
+  };
+
   return (
     <AppBar position="absolute" color="transparent" elevation={0}>
       <Container maxWidth="xl">
-        <Toolbar>
+        <Toolbar disableGutters>
           <Link to="/">
             <Box component="img" src={Logo} sx={{ height: 100, width: 200 }} />
           </Link>
-          <Box sx={{ ...styles.NavbarItem }}>
+          <Box sx={{ ...styles.NavbarItemLarge }}>
             <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>
               Home
             </Typography>
@@ -59,6 +65,14 @@ const NavBar = () => {
               </>
             )}
           </Box>
+          <Box sx={{ ...styles.NavbarItemSmall }}>
+            <IconButton onClick={handleToggleDrawer}>
+              <MenuIcon color="primary" />
+            </IconButton>
+          </Box>
+          <Drawer open={openDrawer} onClose={handleToggleDrawer} anchor="right" sx={{ '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' } }}>
+            Hallo
+          </Drawer>
         </Toolbar>
       </Container>
     </AppBar>

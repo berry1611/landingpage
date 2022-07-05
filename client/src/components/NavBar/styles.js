@@ -10,11 +10,17 @@ const ButtonNavbarContained = {
   textTransform: 'capitalize',
 };
 
-const NavbarItem = {
-  display: 'flex',
+const NavbarItemLarge = {
+  display: { xs: 'none', md: 'flex' },
   flexGrow: 1,
   justifyContent: 'flex-end',
   alignItems: 'center',
+};
+
+const NavbarItemSmall = {
+  display: { xs: 'flex', md: 'none' },
+  justifyContent: 'flex-end',
+  flexGrow: 1,
 };
 
 const TypographyLink = {
@@ -36,6 +42,6 @@ const TypographyLink = {
   },
 };
 
-const styles = { ButtonNavbarOutlined, ButtonNavbarContained, NavbarItem, TypographyLink };
+const styles = { ButtonNavbarOutlined, ButtonNavbarContained, NavbarItemLarge, TypographyLink, NavbarItemSmall };
 
 export default styles;

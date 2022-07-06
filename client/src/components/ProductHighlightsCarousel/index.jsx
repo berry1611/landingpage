@@ -1,25 +1,51 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Carousel from 'react-material-ui-carousel';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, IconButton } from '@mui/material';
 import ProductCard from '../Card/ProductCards/ProductCard';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+let column;
+let maxStep;
+let screenSize;
 
 const ProductHighlightCarousel = () => {
+  screenSize = window.innerWidth;
   const { products } = useSelector((state) => state.products);
+  const [activeStep, setActiveStep] = React.useState(0);
 
-  const displayItems = (products) => {
+  if (screenSize > 1200) {
+    // XL
+    column = 4;
+  } else if (screenSize > 900) {
+    // LG
+    column = 3;
+  } else if (screenSize > 600) {
+    // MD
+    column = 2;
+  } else {
+    // SM & XS
+    column = 1;
+  }
+  products.length && (maxStep = products.length / column);
+
+  const handlePrev = () => {
+    setActiveStep((prevStep) => (prevStep - 1 >= 0 ? prevStep - 1 : maxStep - 1));
+  };
+
+  const handleNext = () => {
+    setActiveStep((prevStep) => (prevStep + 1 < maxStep ? prevStep + 1 : 0));
+  };
+
+  const handleStepChange = (step) => {
+    setActiveStep(step);
+  };
+
+  const displayItems = (products, column) => {
     const result = [];
-    let column;
-    let screenSize = window.innerWidth;
-    if (screenSize > 1280) {
-      column = 4;
-    } else if (screenSize > 960) {
-      column = 3;
-    } else if (screenSize > 600) {
-      column = 2;
-    } else {
-      column = 1;
-    }
 
     if (!products.length) return null;
 
@@ -39,9 +65,25 @@ const ProductHighlightCarousel = () => {
 
   return (
     <Box>
-      <Carousel animation="slide" duration={1000} interval={5000} swipe={false}>
-        {displayItems(products)}
-      </Carousel>
+      {!products.length ? null : (
+        <Grid container spacing={3} columns={14} alignItems="center">
+          <Grid item xs={1}>
+            <IconButton onClick={handlePrev}>
+              <ArrowBackIosNewIcon />
+            </IconButton>
+          </Grid>
+          <Grid item xs={12}>
+            <AutoPlaySwipeableViews index={activeStep} onChangeIndex={handleStepChange} enableMouseEvents>
+              {displayItems(products, column)}
+            </AutoPlaySwipeableViews>
+          </Grid>
+          <Grid item xs={1}>
+            <IconButton onClick={handleNext}>
+              <ArrowForwardIosIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
+      )}
     </Box>
   );
 };

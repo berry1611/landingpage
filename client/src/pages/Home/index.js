@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Container, Typography, Box, Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { NavBar, Footer } from '../../components';
 import Jumbotron from './Jumbotron';

@@ -66,13 +66,13 @@ const ProductHighlightCarousel = () => {
   return (
     <Box>
       {!products.length ? null : (
-        <Grid container spacing={3} columns={14} alignItems="center">
+        <Grid container spacing={3} alignItems="center">
           <Grid item xs={1}>
             <IconButton onClick={handlePrev}>
               <ArrowBackIosNewIcon />
             </IconButton>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={10}>
             <AutoPlaySwipeableViews index={activeStep} onChangeIndex={handleStepChange} enableMouseEvents>
               {displayItems(products, column)}
             </AutoPlaySwipeableViews>

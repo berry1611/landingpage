@@ -21,6 +21,8 @@ const ProductHighlightCarousel = () => {
       column = 1;
     }
 
+    if (!products.length) return null;
+
     for (let i = 0; i < products.length; i += column) {
       result.push(
         <Grid container spacing={3} sx={{ px: 2 }}>

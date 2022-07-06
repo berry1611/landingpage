@@ -29,7 +29,7 @@ const MenuDrawer = ({ open, onClose, user, logout }) => {
       <Divider />
       <List>
         <ListItem key="home" disablePadding>
-          <ListItemButton>
+          <ListItemButton component="a" href="/">
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
@@ -37,7 +37,7 @@ const MenuDrawer = ({ open, onClose, user, logout }) => {
           </ListItemButton>
         </ListItem>
         <ListItem key="product" disablePadding>
-          <ListItemButton>
+          <ListItemButton component="a" href="/product">
             <ListItemIcon>
               <StoreIcon />
             </ListItemIcon>

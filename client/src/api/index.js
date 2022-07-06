@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
-const API = axios.create({ baseURL: 'https://landing-page-ecommerce.herokuapp.com/' });
+let API;
+process.env.NODE_ENV === 'development' ? (API = axios.create({ baseURL: 'http://localhost:5000' })) : (API = axios.create({ baseURL: 'https://landing-page-ecommerce.herokuapp.com/' }));
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {

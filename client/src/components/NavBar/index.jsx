@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar, IconButton, Menu, Drawer } from '@mui/material';
+import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../../assets/icons/logo.svg';
 import { LOGOUT } from '../../state/action-types/actionTypes';
 import styles from './styles';
+import MenuDrawer from './MenuDrawer';
 
 const NavBar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -32,23 +33,14 @@ const NavBar = () => {
           </Link>
           <Box sx={{ ...styles.NavbarItemLarge }}>
             <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>
-              Home
+              HOME
             </Typography>
-            <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>
-              Product
-            </Typography>
-            <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>
-              Lorem
-            </Typography>
-            <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>
-              Lorem
-            </Typography>
-            <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>
-              Lorem
+            <Typography component={Link} to="/product" sx={{ ...styles.TypographyLink }}>
+              PRODUCT
             </Typography>
             <Divider sx={{ height: 40, mr: 2, bgcolor: 'primary.main' }} flexItem orientation="vertical" />
             {user?.data ? (
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box display="flex" alignItems="center">
                 <Avatar sx={{ mr: 2, bgcolor: 'purple' }}>{user.data.name.charAt(0)}</Avatar>
                 <Button variant="contained" onClick={logout} sx={{ ...styles.ButtonNavbarContained }}>
                   Logout
@@ -56,23 +48,21 @@ const NavBar = () => {
               </Box>
             ) : (
               <>
-                <Button component={Link} to="/login" color="primary" disableTouchRipple variant="outlined" sx={{ ...styles.ButtonNavbarOutlined }}>
+                <Button component={Link} to="/login" color="primary" disableTouchRipple variant="contained" sx={{ ...styles.ButtonNavbarContained, mr: 1 }}>
                   Login
                 </Button>
-                <Button component={Link} to="/register" color="primary" disableTouchRipple variant="contained" sx={{ ...styles.ButtonNavbarContained }}>
+                <Button component={Link} to="/register" color="primary" disableTouchRipple variant="outlined" sx={{ ...styles.ButtonNavbarOutlined }}>
                   Register
                 </Button>
               </>
             )}
           </Box>
           <Box sx={{ ...styles.NavbarItemSmall }}>
-            <IconButton onClick={handleToggleDrawer}>
-              <MenuIcon color="primary" />
+            <IconButton sx={{ bgcolor: 'primary.main', borderRadius: 3 }} disableRipple onClick={handleToggleDrawer}>
+              <MenuIcon sx={{ color: 'white' }} />
             </IconButton>
+            <MenuDrawer open={openDrawer} onClose={handleToggleDrawer} user={user} logout={logout} />
           </Box>
-          <Drawer open={openDrawer} onClose={handleToggleDrawer} anchor="right" sx={{ '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' } }}>
-            Hallo
-          </Drawer>
         </Toolbar>
       </Container>
     </AppBar>

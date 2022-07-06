@@ -1,6 +1,5 @@
 const ButtonNavbarOutlined = {
   borderRadius: 3,
-  mr: 1,
   textTransform: 'capitalize',
 };
 

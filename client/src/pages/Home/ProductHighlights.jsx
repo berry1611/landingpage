@@ -13,7 +13,7 @@ const ProductHighlights = () => {
         <ProductHighlightCarousel column={3} />
         <Box sx={{ textAlign: 'center', mt: 3 }}>
           <Button variant="contained" sx={{ borderRadius: 5 }}>
-            All Products
+            Visit Product Store
           </Button>
         </Box>
       </Container>

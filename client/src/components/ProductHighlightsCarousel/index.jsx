@@ -66,18 +66,18 @@ const ProductHighlightCarousel = () => {
   return (
     <Box>
       {!products.length ? null : (
-        <Grid container spacing={3} alignItems="center">
-          <Grid item xs={1}>
+        <Grid container alignItems="center" columns={14}>
+          <Grid item xs={1} sx={{ visibility: { xs: 'hidden', md: 'visible' } }}>
             <IconButton onClick={handlePrev}>
               <ArrowBackIosNewIcon />
             </IconButton>
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={12}>
             <AutoPlaySwipeableViews index={activeStep} onChangeIndex={handleStepChange} enableMouseEvents>
               {displayItems(products, column)}
             </AutoPlaySwipeableViews>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} sx={{ visibility: { xs: 'hidden', md: 'visible' } }}>
             <IconButton onClick={handleNext}>
               <ArrowForwardIosIcon />
             </IconButton>

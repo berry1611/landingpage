@@ -5,17 +5,17 @@ import styles from './styles';
 const Jumbotron = () => {
   return (
     <Box sx={{ ...styles.Jumbotron }}>
-      <Container maxWidth="lg" sx={{ color: 'white', mt: 20 }}>
-        <Typography variant="h3" margin={2}>
-          Lorem, ipsum dolor.
-        </Typography>
-        <Typography variant="h1" margin={2}>
-          Lorem, ipsum.
-        </Typography>
+      <Container maxWidth="lg" sx={{ color: 'white', mt: 30 }}>
         <Typography variant="h4" margin={2}>
-          Lorem, ipsum dolor.
+          Toko Cat Mobil
+        </Typography>
+        <Typography variant="h2" margin={2}>
+          EKA JAYA
+        </Typography>
+        <Typography variant="h5" margin={2}>
+          Cat, Thinner, Vernis
           <br />
-          Lorem. / Lorem.
+          NC / PU
         </Typography>
       </Container>
     </Box>

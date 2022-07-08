@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Container, Button, Typography } from '@mui/material';
 import styles from './styles';
 import { ProductHighlightCarousel } from '../../components';
+import { Link } from 'react-router-dom';
 
 const ProductHighlights = () => {
   return (
@@ -12,7 +13,7 @@ const ProductHighlights = () => {
         </Typography>
         <ProductHighlightCarousel column={3} />
         <Box sx={{ textAlign: 'center', mt: 3 }}>
-          <Button variant="contained" sx={{ borderRadius: 5 }}>
+          <Button component={Link} to="/product" variant="contained" sx={{ borderRadius: 5 }}>
             Visit Product Store
           </Button>
         </Box>

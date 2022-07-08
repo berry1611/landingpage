@@ -1,5 +1,5 @@
 import * as api from '../../api';
-import { LOGIN, REGISTER } from '../action-types/actionTypes';
+import { LOGIN, REGISTER, ERROR } from '../action-types/actionTypes';
 
 export const login = (formData, navigate) => async (dispatch) => {
   try {
@@ -7,7 +7,7 @@ export const login = (formData, navigate) => async (dispatch) => {
     dispatch({ type: LOGIN, payload: data });
     navigate('/');
   } catch (error) {
-    console.log(error);
+    dispatch({ type: ERROR, payload: error.response.data.message });
   }
 };
 
@@ -17,6 +17,6 @@ export const register = (formData, navigate) => async (dispatch) => {
     dispatch({ type: REGISTER, payload: data });
     navigate('/');
   } catch (error) {
-    console.log(error);
+    dispatch({ type: ERROR, payload: error.response.data.message });
   }
 };

@@ -29,7 +29,7 @@ const NavBar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-            <Box component="img" src={Logo} sx={{ height: 100, width: 200 }} />
+            <Box component="img" src={Logo} height={100} width={200} />
           </Link>
           <Box sx={{ ...styles.NavbarItemLarge }}>
             <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>

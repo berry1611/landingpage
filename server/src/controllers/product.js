@@ -6,8 +6,8 @@ export const getProducts = async (req, res) => {
 
   try {
     const result = await Product.find().limit(limit);
-    res.status(200).json({ message: null, data: result });
+    res.status(200).json({ data: result });
   } catch (error) {
-    res.status(404).json({ message: 'Data not found', data: null });
+    res.status(404).json({ message: 'Data not found' });
   }
 };

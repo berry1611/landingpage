@@ -51,7 +51,7 @@ const ProductHighlightCarousel = () => {
 
     for (let i = 0; i < products.length; i += column) {
       result.push(
-        <Grid container spacing={3} sx={{ px: 2 }}>
+        <Grid key={i} container spacing={3} sx={{ px: 2 }}>
           {products.slice(i, i + column).map((product) => (
             <Grid item key={product._id} xs={12 / column}>
               <ProductCard product={product} highlight />

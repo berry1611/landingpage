@@ -1,4 +1,4 @@
-import jumbotronImg from '../../assets/images/jumbotron-img-3.jpg';
+import jumbotronImg from '../../assets/images/jumbotron-img-4.jpg';
 
 const Jumbotron = {
   display: 'flex',

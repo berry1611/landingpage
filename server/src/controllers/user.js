@@ -1,8 +1,8 @@
 import User from '../models/user.js';
 import { compare, hash } from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { loginSchema, registerSchema } from '../../input-validation/user.js';
-import { ERROR_PARAMS_AUTH } from '../../constant/error-params.js';
+import { loginSchema, registerSchema } from '../../inputValidation/user.js';
+import { ERROR_PARAMS_AUTH } from '../../constant/errorParams.js';
 
 export const register = async (req, res) => {
   try {

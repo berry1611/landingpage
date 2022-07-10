@@ -3,10 +3,10 @@ import { Grid, Typography, TextField, Button, Alert } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, login } from '../../state/actions-creators/authentication';
-import styles from './styles';
 import { RESET_ERROR } from '../../state/action-types/actionTypes';
 import { errorAction } from '../../state/actions-creators/error';
-import { ERROR_PARAMS_AUTH, ERROR_PARAMS_CONFIRM_PASSWORD, ERROR_PARAMS_EMAIL, ERROR_PARAMS_NAME, ERROR_PARAMS_PASSWORD } from '../../constant/error-params';
+import { ERROR_PARAMS_AUTH, ERROR_PARAMS_CONFIRM_PASSWORD, ERROR_PARAMS_EMAIL, ERROR_PARAMS_NAME, ERROR_PARAMS_PASSWORD } from '../../constant/errorParams';
+import styles from './styles';
 
 const initialState = { name: '', email: '', password: '', confirmPassword: '' };
 
@@ -63,16 +63,7 @@ const AuthForm = ({ registerForm }) => {
               </Grid>
             )}
             <Grid item>
-              <TextField
-                name="email"
-                fullWidth
-                size="small"
-                label="Email"
-                type="email"
-                onChange={handleChange}
-                error={error.status === 422 && error.params === ERROR_PARAMS_EMAIL}
-                helperText={error.params === ERROR_PARAMS_EMAIL && error.message}
-              />
+              <TextField name="email" fullWidth size="small" label="Email" onChange={handleChange} error={error.status === 422 && error.params === ERROR_PARAMS_EMAIL} helperText={error.params === ERROR_PARAMS_EMAIL && error.message} />
             </Grid>
             <Grid item>
               <TextField

@@ -2,8 +2,12 @@ import mongoose from 'mongoose';
 
 const ProductHighlightSchema = mongoose.Schema(
   {
+    name: String,
     code: String,
     color: String,
+    price: Number,
+    stock: Number,
+    imageUrl: String,
   },
   { timestamps: true }
 );

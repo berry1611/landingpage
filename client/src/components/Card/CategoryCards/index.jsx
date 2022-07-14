@@ -1,35 +1,45 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import CategoryCard from './CategoryCard';
+import { useSelector } from 'react-redux';
+import convertToCamelCase from '../../../utils/convertToCamelCase';
 
 const cardColor = ['blue', 'orange', 'yellow', 'red', 'green', 'purple'];
 
-const productProperties = [
-  {
-    name: 'Top Color',
-    href: '/product/topColor',
-  },
-  {
-    name: 'Danagloss',
-    href: '/product/danagloss',
-  },
-  {
-    name: 'Blinken',
-    href: '/product/blinken',
-  },
-  {
-    name: 'Alfaglos',
-    href: '/product/alfaglos',
-  },
-];
+// const productProperties = [
+//   {
+//     name: 'Top Color',
+//     href: '/product/topColor',
+//   },
+//   {
+//     name: 'Danagloss',
+//     href: '/product/danagloss',
+//   },
+//   {
+//     name: 'Blinken',
+//     href: '/product/blinken',
+//   },
+//   {
+//     name: 'Alfaglos',
+//     href: '/product/alfaglos',
+//   },
+// ];
 
 const CategoryCards = () => {
+  const { products } = useSelector((state) => state.products);
+  const productProperties = products
+    .map((product) => product.name)
+    .filter((product, index, self) => self.indexOf(product) === index)
+    .map((name) => {
+      return { name, href: `/product/${convertToCamelCase(name)}` };
+    });
+
   const displayProducts = (productProperties, cardColor) => {
     let i = 0;
     const products = [];
     for (let product of productProperties) {
       products.push(
-        <Grid item xs={6} md={4} lg={3}>
+        <Grid item key={product.name} xs={6} md={4} lg={3}>
           <CategoryCard name={product.name} cardColor={cardColor[i]} href={product.href} />
         </Grid>
       );

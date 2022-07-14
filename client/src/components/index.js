@@ -7,3 +7,4 @@ export { default as Footer } from './Footer';
 export { default as AuthForm } from './AuthForm';
 export { default as CategoryCards } from './Card/CategoryCards';
 export { default as CategoryCard } from './Card/CategoryCards/CategoryCard';
+export { default as ProductCategory } from './ProductCategory';

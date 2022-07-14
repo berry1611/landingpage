@@ -1,4 +1,4 @@
-import { RESET_ERROR } from '../action-types/actionTypes';
+import { RESET_ERROR } from '../action-types';
 
 export const errorAction = (actionType, error) => {
   if (actionType === RESET_ERROR) {

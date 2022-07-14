@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar position="absolute" color="transparent" />
       <Jumbotron />
       <About />
       <ProductBrand />

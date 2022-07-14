@@ -1,4 +1,4 @@
-import { FETCH_ERROR, RESET_ERROR } from '../action-types/actionTypes';
+import { FETCH_ERROR, RESET_ERROR } from '../action-types';
 
 const initialState = {
   status: null,

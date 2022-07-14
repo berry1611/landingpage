@@ -3,7 +3,7 @@ import { Grid, Typography, TextField, Button, Alert } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, login } from '../../state/actions-creators/authentication';
-import { RESET_ERROR } from '../../state/action-types/actionTypes';
+import { RESET_ERROR } from '../../state/action-types';
 import { errorAction } from '../../state/actions-creators/error';
 import { ERROR_PARAMS_AUTH, ERROR_PARAMS_CONFIRM_PASSWORD, ERROR_PARAMS_EMAIL, ERROR_PARAMS_NAME, ERROR_PARAMS_PASSWORD } from '../../constant/errorParams';
 import styles from './styles';

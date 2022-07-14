@@ -1,5 +1,5 @@
 import * as api from '../../api';
-import { LOGIN, REGISTER, FETCH_ERROR } from '../action-types/actionTypes';
+import { LOGIN, REGISTER, FETCH_ERROR } from '../action-types';
 import { errorAction } from './error';
 
 export const login = (formData, navigate) => async (dispatch) => {

@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux';
 import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../../assets/icons/logo.svg';
-import { LOGOUT } from '../../state/action-types/actionTypes';
+import { LOGOUT } from '../../state/action-types';
 import styles from './styles';
 import MenuDrawer from './MenuDrawer';
+import SearchBar from '../SearchBar';
 
-const NavBar = () => {
+const NavBar = ({ position, color, searchBar, sx }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const [openDrawer, setOpenDrawer] = useState(false);
   const dispatch = useDispatch();
@@ -25,13 +26,24 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="absolute" color="transparent" elevation={0}>
+    <AppBar position={position} color={color} elevation={0} sx={{ ...sx }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
             <Box component="img" src={Logo} height={100} width={200} />
           </Link>
           <Box sx={{ ...styles.NavbarItemLarge }}>
+            {searchBar && (
+              <SearchBar
+                color="primary"
+                sx={{
+                  mx: 3,
+                  '& .MuiInputLabel-root': { color: 'primary.main' },
+                  '& .MuiOutlinedInput-root': { '& > fieldset': { borderColor: 'primary.main' } },
+                  '& .MuiOutlinedInput-root:hover': { '& > fieldset': { borderColor: 'primary.main' } },
+                }}
+              />
+            )}
             <Typography component={Link} to="/" sx={{ ...styles.TypographyLink }}>
               HOME
             </Typography>

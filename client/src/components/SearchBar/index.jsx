@@ -3,10 +3,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
 import { IconButton, InputAdornment } from '@mui/material';
 
-const SearchBar = ({ color, sx, fullWidth }) => {
+const SearchBar = ({ color, variant = 'outlined', sx, fullWidth }) => {
   return (
     <TextField
-      variant="outlined"
+      variant={variant}
       color={color}
       label="Search"
       size="small"

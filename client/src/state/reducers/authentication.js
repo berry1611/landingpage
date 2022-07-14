@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, LOGOUT } from '../../state/action-types/actionTypes';
+import { LOGIN, REGISTER, LOGOUT } from '../../state/action-types';
 
 const initialState = {
   authData: null,

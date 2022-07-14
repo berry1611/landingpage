@@ -1,5 +1,5 @@
 import * as api from '../../api';
-import { FETCH_ALL_PRODUCTS } from '../../state/action-types/actionTypes';
+import { FETCH_ALL_PRODUCTS } from '../action-types';
 
 export const getProducts = (limit) => async (dispatch) => {
   try {

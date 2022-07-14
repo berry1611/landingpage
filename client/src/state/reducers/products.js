@@ -1,4 +1,4 @@
-import { FETCH_ALL_PRODUCTS } from '../action-types/actionTypes';
+import { FETCH_ALL_PRODUCTS } from '../action-types';
 
 const initialState = {
   products: [],

@@ -13,5 +13,9 @@ API.interceptors.request.use((req) => {
 export const fetchProducts = (limit) => API.get(`/product?limit=${limit}`);
 export const fetchProductsByName = (name) => API.get(`/product?name=${name}`);
 
+export const fetchCart = () => API.get('/cart');
+export const addProductToCart = (product) => API.post('/cart', product);
+export const clearCart = () => API.delete('/cart');
+
 export const login = (formData) => API.post('/user/login', formData);
 export const register = (formData) => API.post('/user/register', formData);

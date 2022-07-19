@@ -16,7 +16,7 @@ export const register = async (req, res) => {
     res.status(200).json({ data: result, token });
   } catch (error) {
     if (error.isJoi) return res.status(422).json({ message: error.message, params: error.details[0].path[0] });
-    res.status(500).json({ message: error.message, error: error.message });
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };
 

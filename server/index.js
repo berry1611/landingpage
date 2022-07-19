@@ -7,6 +7,7 @@ import path from 'path';
 
 import productRoutes from './src/router/product.js';
 import userRoutes from './src/router/user.js';
+import cartRoutes from './src/router/cart.js';
 import { getStoragePath } from './src/utils/pathHelper.js';
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(express.static(path.join(getStoragePath(), 'public')));
 
 app.get('/', (req, res) => res.status(200).json({ message: 'Connected to Server' }));
 app.use('/product', productRoutes);
+app.use('/cart', cartRoutes);
 app.use('/user', userRoutes);
 
 mongoose

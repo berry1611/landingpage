@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar, IconButton } from '@mui/material';
@@ -8,6 +8,7 @@ import { LOGOUT } from '../../state/action-types';
 import styles from './styles';
 import MenuDrawer from './MenuDrawer';
 import SearchBar from '../SearchBar';
+import ShoppingCart from '../ShoppingCart';
 
 const NavBar = ({ position, color, searchBar, sx }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -30,8 +31,21 @@ const NavBar = ({ position, color, searchBar, sx }) => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-            <Box component="img" src={Logo} height={100} width={200} />
+            <Box component="img" src={Logo} height={100} width={200} sx={{ display: { xs: 'none', md: 'flex' } }} />
           </Link>
+          {searchBar && (
+            <SearchBar
+              color="primary"
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'none' },
+                alignItems: 'center',
+                '& .MuiInputLabel-root': { color: 'primary.main' },
+                '& .MuiOutlinedInput-root': { '& > fieldset': { borderColor: 'primary.main' } },
+                '& .MuiOutlinedInput-root:hover': { '& > fieldset': { borderColor: 'primary.main' } },
+              }}
+            />
+          )}
           <Box sx={{ ...styles.NavbarItemLarge }}>
             {searchBar && (
               <SearchBar
@@ -51,6 +65,7 @@ const NavBar = ({ position, color, searchBar, sx }) => {
               PRODUCT
             </Typography>
             <Divider sx={{ height: 40, mr: 2, bgcolor: 'primary.main' }} flexItem orientation="vertical" />
+            <ShoppingCart />
             {user?.data ? (
               <Box display="flex" alignItems="center">
                 <Avatar sx={{ mr: 2, bgcolor: 'purple' }}>{user.data.name.charAt(0)}</Avatar>
@@ -70,6 +85,9 @@ const NavBar = ({ position, color, searchBar, sx }) => {
             )}
           </Box>
           <Box sx={{ ...styles.NavbarItemSmall }}>
+            <IconButton sx={{ mr: 2 }}>
+              <ShoppingCart color="primary" />
+            </IconButton>
             <IconButton sx={{ bgcolor: 'primary.main', borderRadius: 3 }} disableRipple onClick={handleToggleDrawer}>
               <MenuIcon sx={{ color: 'white' }} />
             </IconButton>

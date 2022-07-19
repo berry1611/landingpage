@@ -15,12 +15,12 @@ const ProductCategory = ({ name }) => {
 
   return (
     <>
-      <NavBar color="inherit" position="relative" />
-      <Container maxWidth="xl">
-        <Typography variant="h4" marginY={2}>
-          {name}
-        </Typography>
-        <Divider orientation="horizontal" variant="fullWidth" sx={{ my: 2, bgcolor: 'black' }} />
+      <NavBar color="inherit" position="relative" searchBar />
+      <Typography variant="h4" marginTop={2} textAlign="center">
+        {name}
+      </Typography>
+      <Container maxWidth="lg">
+        <Divider orientation="horizontal" variant="fullWidth" sx={{ my: 3, bgcolor: 'black' }} />
         <ProductCards />
       </Container>
       <Footer />

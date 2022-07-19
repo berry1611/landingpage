@@ -7,9 +7,9 @@ const ProductCards = () => {
   const { products } = useSelector((state) => state.products);
 
   return (
-    <Grid sx={{ display: 'flex', alignItems: 'center' }} container spacing={3} justifyContent="flex-start">
+    <Grid sx={{ display: 'flex', alignItems: 'center' }} container spacing={4} justifyContent="flex-start">
       {products.map((product) => (
-        <Grid item key={product._id} xs={6} sm={4} md={3} lg={2}>
+        <Grid item key={product._id} xs={6} sm={4} md={3}>
           <ProductCard product={product} />
         </Grid>
       ))}

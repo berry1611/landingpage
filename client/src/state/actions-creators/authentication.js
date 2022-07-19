@@ -6,7 +6,7 @@ export const login = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await api.login(formData);
     dispatch({ type: LOGIN, payload: data });
-    navigate('/');
+    navigate(-1);
   } catch (error) {
     dispatch(errorAction(FETCH_ERROR, error));
   }

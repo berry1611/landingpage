@@ -6,25 +6,6 @@ import convertToCamelCase from '../../../utils/convertToCamelCase';
 
 const cardColor = ['blue', 'orange', 'yellow', 'red', 'green', 'purple'];
 
-// const productProperties = [
-//   {
-//     name: 'Top Color',
-//     href: '/product/topColor',
-//   },
-//   {
-//     name: 'Danagloss',
-//     href: '/product/danagloss',
-//   },
-//   {
-//     name: 'Blinken',
-//     href: '/product/blinken',
-//   },
-//   {
-//     name: 'Alfaglos',
-//     href: '/product/alfaglos',
-//   },
-// ];
-
 const CategoryCards = () => {
   const { products } = useSelector((state) => state.products);
   const productProperties = products

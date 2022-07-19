@@ -1,8 +1,8 @@
 import React from 'react';
 import { Divider, Drawer, List, ListItem, Toolbar, Button, ListItemButton, ListItemText, ListItemIcon, Avatar, Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import StoreIcon from '@mui/icons-material/LocalGroceryStore';
-import HomeIcon from '@mui/icons-material/Home';
+import StoreIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
+import HomeIcon from '@mui/icons-material/HomeOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import styles from './styles';
 

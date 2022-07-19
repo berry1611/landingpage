@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Box, Grid, IconButton } from '@mui/material';
 import ProductCard from '../Card/ProductCards/ProductCard';
@@ -15,7 +15,7 @@ let screenSize;
 const ProductHighlightCarousel = () => {
   screenSize = window.innerWidth;
   const { products } = useSelector((state) => state.products);
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
   if (screenSize > 1200) {
     // XL

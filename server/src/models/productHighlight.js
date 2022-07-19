@@ -1,17 +1,6 @@
 import mongoose from 'mongoose';
+import productSchema from './schema/product.js';
 
-const ProductHighlightSchema = mongoose.Schema(
-  {
-    name: String,
-    code: String,
-    color: String,
-    price: Number,
-    stock: Number,
-    imageUrl: String,
-  },
-  { timestamps: true }
-);
-
-const ProductHighlight = mongoose.model('Product Highlight', ProductHighlightSchema);
+const ProductHighlight = mongoose.model('Product Highlight', productSchema);
 
 export default ProductHighlight;

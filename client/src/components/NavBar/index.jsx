@@ -86,17 +86,11 @@ const NavBar = ({ position, color, searchBar, sx }) => {
             )}
           </Box>
           <Box sx={{ ...styles.NavbarItemSmall }}>
-            <Grid container spacing={3} alignItems="center">
-              <Grid item>
-                <ShoppingCart color="primary" />
-              </Grid>
-              <Grid item>
-                <IconButton sx={{ bgcolor: 'primary.main', borderRadius: 3 }} disableRipple onClick={handleToggleDrawer}>
-                  <MenuIcon sx={{ color: 'white' }} />
-                </IconButton>
-                <MenuDrawer open={openDrawer} onClose={handleToggleDrawer} user={user} logout={logout} />
-              </Grid>
-            </Grid>
+            <ShoppingCart color="primary" sx={{ mr: 2 }} />
+            <IconButton sx={{ bgcolor: 'primary.main', borderRadius: 3 }} disableRipple onClick={handleToggleDrawer}>
+              <MenuIcon sx={{ color: 'white' }} />
+            </IconButton>
+            <MenuDrawer open={openDrawer} onClose={handleToggleDrawer} user={user} logout={logout} />
           </Box>
         </Toolbar>
       </Container>

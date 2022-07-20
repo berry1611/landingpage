@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <>
-      <NavBar position="absolute" color="transparent" />
+      <NavBar position="absolute" color="transparent" storeLogo />
       <Jumbotron />
       <About />
       <ProductBrand />

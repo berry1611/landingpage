@@ -10,7 +10,7 @@ import MenuDrawer from './MenuDrawer';
 import SearchBar from '../SearchBar';
 import ShoppingCart from '../ShoppingCart';
 
-const NavBar = ({ position, color, searchBar, sx }) => {
+const NavBar = ({ position, color, searchBar, storeLogo, sx }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const [openDrawer, setOpenDrawer] = useState(false);
   const dispatch = useDispatch();
@@ -30,9 +30,7 @@ const NavBar = ({ position, color, searchBar, sx }) => {
     <AppBar position={position} color={color} elevation={0} sx={{ ...sx }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link to="/">
-            <Box component="img" src={Logo} height={100} width={200} sx={{ display: { xs: 'none', md: 'flex' } }} />
-          </Link>
+          <Link to="/">{!storeLogo ? <Box component="img" src={Logo} height={100} width={200} sx={{ display: { xs: 'none', md: 'flex' } }} /> : <Box component="img" src={Logo} height={100} width={200} />}</Link>
           {searchBar && (
             <SearchBar
               color="primary"

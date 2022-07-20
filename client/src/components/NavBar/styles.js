@@ -11,7 +11,7 @@ const ButtonNavbarContained = {
 
 const NavbarItemLarge = {
   display: { xs: 'none', md: 'flex' },
-  flexGrow: 1,
+  ml: 'auto',
   justifyContent: 'flex-end',
   alignItems: 'center',
 };
@@ -19,7 +19,7 @@ const NavbarItemLarge = {
 const NavbarItemSmall = {
   display: { xs: 'flex', md: 'none' },
   justifyContent: 'flex-end',
-  flexGrow: 1,
+  ml: 'auto',
 };
 
 const TypographyLink = {

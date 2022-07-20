@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Badge, Box, Button, Divider, IconButton, Popover, Typography } from '@mui/material';
+import { Badge, Box, Button, Divider, IconButton, Grid, Popover, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, getProductCart } from '../../state/actions-creators/cart';
 import { useNavigate } from 'react-router-dom';
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ sx }) => {
   const { cart } = useSelector((state) => state.products);
   const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch();
@@ -32,13 +32,13 @@ const ShoppingCart = () => {
 
   return (
     <>
-      <IconButton sx={{ mr: 2 }} onClick={handlePopoverOpen} aria-haspopup="true" aria-owns={open ? 'mouse-hover' : undefined}>
+      <IconButton sx={{ ...sx }} onClick={handlePopoverOpen}>
         <Badge badgeContent={cart.length} color="info">
           <ShoppingCartIcon color="primary" />
         </Badge>
       </IconButton>
       <Popover
-        id="mouse-hover"
+        sx={{ maxHeight: '300px' }}
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
@@ -47,25 +47,40 @@ const ShoppingCart = () => {
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'center',
+          horizontal: 'right',
         }}
         onClose={handlePopoverClose}
+        disableScrollLock
       >
-        {cart.length ? (
-          <Box textAlign="center">
-            <Button onClick={handleClearCart} size="small">
-              Clear
-            </Button>
-            <Divider orientation="horizontal" variant="fullWidth" />
-          </Box>
-        ) : (
-          <Typography>Empty Cart</Typography>
-        )}
-        {cart.map((item) => (
-          <Typography>
-            {item.name} | {item.code}
-          </Typography>
-        ))}
+        <Grid container direction="column">
+          {cart.length ? (
+            <Grid item>
+              <Box textAlign="center">
+                <Button onClick={handleClearCart} size="small">
+                  Clear
+                </Button>
+                <Divider orientation="horizontal" variant="fullWidth" />
+              </Box>
+            </Grid>
+          ) : (
+            <Grid item>
+              <Typography padding={8}>Empty Cart</Typography>
+            </Grid>
+          )}
+          {cart.map((item) => (
+            <Grid item>
+              <Grid container spacing={3} paddingY={1} paddingX={2} justifyContent="space-between">
+                <Grid item>
+                  <Typography noWrap>{item.name}</Typography>
+                  <Typography noWrap>{item.code}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>209.000</Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
       </Popover>
     </>
   );

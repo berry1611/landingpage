@@ -13,7 +13,7 @@ const ProductCard = ({ product, highlight }) => {
 
   return (
     <Card raised sx={{ ...styles.Cardwrapper }}>
-      <CardMedia component="img" alt={product.name} height="200" image={product.imageUrl || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} />
+      <CardMedia component="img" alt={product.name} image={product.imageUrl || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} />
       <Box sx={{ ...styles.CardContent }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

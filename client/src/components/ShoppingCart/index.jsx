@@ -83,7 +83,7 @@ const ShoppingCart = ({ sx }) => {
                 </Grid>
                 <Grid item xs={4} sm="auto">
                   <Typography noWrap>{item.name}</Typography>
-                  <Typography>{item.code}</Typography>
+                  <Typography noWrap>{item.code}</Typography>
                   <Typography variant="body2" sx={{ color: 'info.light', fontWeight: 'bold' }}>
                     {`x${item.quantity}`}
                   </Typography>

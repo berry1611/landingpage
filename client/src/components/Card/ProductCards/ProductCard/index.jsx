@@ -1,10 +1,13 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActions, Button, Box } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import AddShoopingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles';
 import { addProductToCart } from '../../../../state/actions-creators/cart';
 
 const ProductCard = ({ product, highlight }) => {
+  const { cart } = useSelector((state) => state.products);
+  const cartQuantity = cart.find((item) => item._id === product._id)?.quantity;
   const dispatch = useDispatch();
 
   const handleBuyProduct = () => {
@@ -22,15 +25,21 @@ const ProductCard = ({ product, highlight }) => {
           <Typography gutterBottom variant="body1" component="div">
             {product.code}
           </Typography>
-          <Typography gutterBottom variant="body2" color="text.secondary">
+          <Typography gutterBottom variant="body2" color="text.secondary" noWrap>
             {product.color}
           </Typography>
         </CardContent>
         {!highlight && (
-          <CardActions>
-            <Button color="info" variant="contained" sx={{ ml: 1, mb: 1, borderRadius: 5 }} onClick={handleBuyProduct}>
+          <CardActions sx={{ px: 2, pb: 2 }}>
+            <Button color="info" variant="contained" sx={{ borderRadius: 5 }} onClick={handleBuyProduct}>
               Buy
             </Button>
+            {cartQuantity && (
+              <>
+                <AddShoopingCartIcon sx={{ ml: 'auto' }} />
+                <Typography>{cartQuantity}</Typography>
+              </>
+            )}
           </CardActions>
         )}
       </Box>

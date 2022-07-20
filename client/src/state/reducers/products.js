@@ -14,6 +14,10 @@ const productReducer = (state = initialState, action) => {
     case FETCH_CART:
       return { ...state, cart: action.payload.data };
     case ADD_PRODUCT_TO_CART:
+      const ids = state.cart.map((item) => item._id);
+      if (ids.includes(action.payload.data._id)) {
+        return { ...state, cart: state.cart.map((item) => (item._id === action.payload.data._id ? action.payload.data : item)) };
+      }
       return { ...state, cart: [...state.cart, action.payload.data] };
     case CLEAR_CART:
       return { ...state, cart: [] };

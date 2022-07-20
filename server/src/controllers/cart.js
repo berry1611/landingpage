@@ -13,9 +13,15 @@ export const getProductCart = async (req, res) => {
 export const addProductToCart = async (req, res) => {
   const product = req.body;
   const addedProduct = new Cart({ ...product });
+  const isProductAdded = await Cart.findById(addedProduct._id);
   try {
-    await addedProduct.save();
-    res.status(201).json({ data: addedProduct });
+    if (!isProductAdded) {
+      await addedProduct.save();
+      res.status(201).json({ data: addedProduct });
+    } else {
+      const updatedProduct = await Cart.findByIdAndUpdate(addedProduct._id, { $inc: { quantity: 1 } }, { new: true });
+      res.status(200).json({ data: updatedProduct });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -24,6 +30,7 @@ export const addProductToCart = async (req, res) => {
 export const clearCart = async (req, res) => {
   try {
     await Cart.deleteMany({});
+    res.status(200).json({ data: 'Cart items deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

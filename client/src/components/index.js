@@ -8,3 +8,5 @@ export { default as AuthForm } from './AuthForm';
 export { default as CategoryCards } from './Card/CategoryCards';
 export { default as CategoryCard } from './Card/CategoryCards/CategoryCard';
 export { default as ProductCategory } from './ProductCategory';
+export { default as CartCards } from './Card/CartCards';
+export { default as CartCard } from './Card/CartCards/CartCard';

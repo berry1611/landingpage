@@ -4,19 +4,12 @@ import { Badge, Box, Button, Divider, IconButton, Grid, Popover, Typography } fr
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, getProductCart } from '../../state/actions-creators/cart';
 import { Link } from 'react-router-dom';
+import rupiah from '../../utils/rupiahCurrencyFormat';
 
 const ShoppingCart = ({ sx }) => {
   const { cart } = useSelector((state) => state.products);
   const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch();
-
-  const rupiah = (price) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
 
   useEffect(() => {
     dispatch(getProductCart());
@@ -63,9 +56,9 @@ const ShoppingCart = ({ sx }) => {
           {cart.length ? (
             <Grid item>
               <Box display="flex" alignItems="center" paddingX={2} paddingY={1}>
-                <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>{`Cart(${cart.length})`}</Typography>
-                <Button onClick={handleClearCart} size="small" sx={{ ml: 'auto', textTransform: 'capitalize' }}>
-                  Clear
+                <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>{`Cart(${cart.map((item) => item.quantity).reduce((curr, acc) => curr + acc)})`}</Typography>
+                <Button component={Link} to="/cart" variant="contained" size="small" sx={{ ml: 'auto', borderRadius: 5, textTransform: 'capitalize' }}>
+                  View Cart
                 </Button>
               </Box>
               <Divider orientation="horizontal" variant="fullWidth" />
@@ -89,7 +82,7 @@ const ShoppingCart = ({ sx }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={4} sm="auto" marginLeft="auto" marginY="auto">
-                  <Typography sx={{ color: 'info.light', fontWeight: 'bold' }}>{rupiah(item.quantity * 100000)}</Typography>
+                  <Typography sx={{ color: 'info.light', fontWeight: 'bold' }}>{rupiah(item.subTotal)}</Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -97,8 +90,8 @@ const ShoppingCart = ({ sx }) => {
           {cart.length ? (
             <>
               <Divider orientation="horizontal" variant="fullWidth" />
-              <Button component={Link} to="/cart" variant="contained" size="small" sx={{ ml: 'auto', mr: 2, my: 2, borderRadius: 5, textTransform: 'capitalize' }}>
-                Checkout
+              <Button onClick={handleClearCart} size="small" sx={{ ml: 'auto', mr: 2, textTransform: 'capitalize' }}>
+                Clear
               </Button>
             </>
           ) : null}

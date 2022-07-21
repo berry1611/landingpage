@@ -4,6 +4,7 @@ import AddShoopingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles';
 import { addProductToCart } from '../../../../state/actions-creators/cart';
+import rupiah from '../../../../utils/rupiahCurrencyFormat';
 
 const ProductCard = ({ product, highlight }) => {
   const { cart } = useSelector((state) => state.products);
@@ -27,6 +28,9 @@ const ProductCard = ({ product, highlight }) => {
           </Typography>
           <Typography gutterBottom variant="body2" color="text.secondary" noWrap>
             {product.color}
+          </Typography>
+          <Typography gutterBottom fontWeight="bold" variant="h6" color="text.secondary" noWrap>
+            {rupiah(product.price)}
           </Typography>
         </CardContent>
         {!highlight && (

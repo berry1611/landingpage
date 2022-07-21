@@ -12,18 +12,20 @@ export const getProductCart = async (req, res) => {
 
 export const addProductToCart = async (req, res) => {
   const product = req.body;
-  const addedProduct = new Cart({ ...product });
+  const addedProduct = new Cart(product);
   const isProductAdded = await Cart.findById(addedProduct._id);
   try {
     if (!isProductAdded) {
       await addedProduct.save();
       res.status(201).json({ data: addedProduct });
     } else {
-      const updatedProduct = await Cart.findByIdAndUpdate(addedProduct._id, { $inc: { quantity: 1 } }, { new: true });
+      const updatedQuantity = await Cart.findByIdAndUpdate(addedProduct._id, { $inc: { quantity: 1 } }, { new: true });
+      const updatedProduct = await Cart.findByIdAndUpdate(addedProduct._id, { subTotal: updatedQuantity.price * updatedQuantity.quantity }, { new: true });
       res.status(200).json({ data: updatedProduct });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
+    console.log(error);
   }
 };
 

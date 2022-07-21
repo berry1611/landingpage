@@ -7,12 +7,19 @@ const CartCard = ({ cartItem }) => {
     <Box>
       <Divider sx={{ borderBottomWidth: 6, my: 2, opacity: 0.5 }} />
       <Grid container>
-        <Grid item>
+        <Grid item marginY="auto">
           <Box component="img" src={cartItem.imageUrl} height={100} width={100} />
         </Grid>
-        <Grid item>
-          <Typography variant="h6">{`${cartItem.name} ${cartItem.code}`}</Typography>
-          <Typography variant="body2">{cartItem.color}</Typography>
+        <Grid item xs={8} sm="auto">
+          <Typography variant="h6" noWrap>
+            {cartItem.name}
+          </Typography>
+          <Typography variant="h6" noWrap>
+            {cartItem.code}
+          </Typography>
+          <Typography variant="body2" noWrap>
+            {cartItem.color}
+          </Typography>
           <Typography variant="h6" fontWeight="bold" sx={{ color: 'info.main' }}>{`x${cartItem.quantity}`}</Typography>
         </Grid>
         <Grid item marginLeft="auto" marginTop="auto">

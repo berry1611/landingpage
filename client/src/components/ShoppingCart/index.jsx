@@ -53,21 +53,21 @@ const ShoppingCart = ({ sx }) => {
         disableAutoFocus
       >
         <Grid container direction="column">
-          {cart.length ? (
-            <Grid item>
-              <Box display="flex" alignItems="center" paddingX={2} paddingY={1}>
-                <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>{`Cart(${cart.map((item) => item.quantity).reduce((curr, acc) => curr + acc)})`}</Typography>
-                <Button component={Link} to="/cart" variant="contained" size="small" sx={{ ml: 'auto', borderRadius: 5, textTransform: 'capitalize' }}>
-                  View Cart
-                </Button>
-              </Box>
-              <Divider orientation="horizontal" variant="fullWidth" />
-            </Grid>
-          ) : (
-            <Grid item>
-              <Typography padding={8}>Empty Cart</Typography>
-            </Grid>
-          )}
+          <Grid item>
+            <Box display="flex" alignItems="center" paddingX={2} paddingY={1}>
+              <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>{`Cart(${cart.length ? cart.map((item) => item.quantity).reduce((curr, acc) => curr + acc) : 0})`}</Typography>
+              <Button component={Link} to="/cart" variant="contained" size="small" sx={{ ml: 'auto', borderRadius: 5, textTransform: 'capitalize' }}>
+                View Cart
+              </Button>
+            </Box>
+            <Divider orientation="horizontal" variant="fullWidth" />
+            {!cart.length && (
+              <Typography paddingY={8} paddingX={12}>
+                Empty Cart
+              </Typography>
+            )}
+          </Grid>
+
           {cart.map((item) => (
             <Grid item>
               <Grid container spacing={3} paddingY={1} paddingX={2} justifyContent="flex-start">

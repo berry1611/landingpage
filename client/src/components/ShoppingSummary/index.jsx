@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../../state/actions-creators/cart';
 import rupiah from '../../utils/rupiahCurrencyFormat';
 
-const ShoppingSummary = () => {
+const ShoppingSummary = ({ setAlert }) => {
   const { cart } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
@@ -13,6 +13,7 @@ const ShoppingSummary = () => {
 
   const handleBuy = () => {
     dispatch(clearCart());
+    setAlert(true);
   };
 
   return (

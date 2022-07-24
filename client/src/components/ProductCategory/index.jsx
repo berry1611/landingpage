@@ -23,7 +23,7 @@ const ProductCategory = ({ name }) => {
           <Button component={Link} to="/product" size="small" sx={{ mt: 'auto', mb: 1 }} startIcon={<KeyboardBackspaceIcon />}>
             Back
           </Button>
-          <Typography variant="h4" marginX="auto" marginY={2}>
+          <Typography variant="h6" marginX="auto" marginY={2}>
             {name}
           </Typography>
         </Box>

@@ -37,3 +37,36 @@ export const clearCart = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const updateQuantity = async (req, res) => {
+  const { sub, add } = req.body;
+  const { id: _id } = req.params;
+
+  try {
+    if (sub) {
+      const updatedQuantity = await Cart.findByIdAndUpdate(_id, { $inc: { quantity: -1 } }, { new: true });
+      if (updatedQuantity.quantity < 1) updatedQuantity = await Cart.findByIdAndDelete(_id, { new: true });
+      const result = await Cart.findByIdAndUpdate(_id, { subTotal: updatedQuantity.quantity * updatedQuantity.price }, { new: true });
+      return res.status(200).json({ data: result });
+    }
+    if (add) {
+      const updatedQuantity = await Cart.findByIdAndUpdate(_id, { $inc: { quantity: 1 } }, { new: true });
+      const result = await Cart.findByIdAndUpdate(_id, { subTotal: updatedQuantity.quantity * updatedQuantity.price }, { new: true });
+      return res.status(200).json({ data: result });
+    }
+    return res.status(400).json({ message: 'Quantity update failed' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteCartItem = async (req, res) => {
+  const { id: _id } = req.params;
+
+  try {
+    await Cart.findByIdAndDelete(_id);
+    res.status(200).json({ data: 'Delete item successful' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

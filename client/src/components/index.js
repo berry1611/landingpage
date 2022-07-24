@@ -10,3 +10,5 @@ export { default as CategoryCard } from './Card/CategoryCards/CategoryCard';
 export { default as ProductCategory } from './ProductCategory';
 export { default as CartCards } from './Card/CartCards';
 export { default as CartCard } from './Card/CartCards/CartCard';
+export { default as ShoppingSummary } from './ShoppingSummary';
+export { default as ShoppingSummaryDrawer } from './ShoppingSummary/ShoppingSummaryDrawer';

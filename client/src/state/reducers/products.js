@@ -1,4 +1,4 @@
-import { CLEAR_CART, ADD_PRODUCT_TO_CART, FETCH_ALL_PRODUCTS, FETCH_CART, FETCH_PRODUCTS_BY_NAME } from '../action-types';
+import { CLEAR_CART, ADD_PRODUCT_TO_CART, FETCH_ALL_PRODUCTS, FETCH_CART, FETCH_PRODUCTS_BY_NAME, UPDATE_QUANTITY, DELETE_CART_ITEM } from '../action-types';
 
 const initialState = {
   products: [],
@@ -21,6 +21,10 @@ const productReducer = (state = initialState, action) => {
       return { ...state, cart: [...state.cart, action.payload.data] };
     case CLEAR_CART:
       return { ...state, cart: [] };
+    case UPDATE_QUANTITY:
+      return { ...state, cart: state.cart.map((item) => (item._id === action.payload.data._id ? action.payload.data : item)) };
+    case DELETE_CART_ITEM:
+      return { ...state, cart: state.cart.filter((item) => item._id !== action.payload.data.id) };
     default:
       return state;
   }

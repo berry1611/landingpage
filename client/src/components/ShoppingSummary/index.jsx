@@ -1,23 +1,16 @@
 import { Paper, Typography, Box, Divider, Button } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '../../state/actions-creators/cart';
+import { useSelector } from 'react-redux';
 import rupiah from '../../utils/rupiahCurrencyFormat';
 
-const ShoppingSummary = ({ setAlert }) => {
+const ShoppingSummary = ({ handleBuy }) => {
   const { cart } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
 
   const totalItemQuantity = cart.map((item) => item.quantity).reduce((curr, acc) => curr + acc);
   const totalItemPrice = cart.map((item) => item.subTotal).reduce((curr, acc) => curr + acc);
   const grandTotal = totalItemPrice;
 
-  const handleBuy = () => {
-    dispatch(clearCart());
-    setAlert(true);
-  };
-
   return (
-    <Paper sx={{ p: 2 }} elevation={3}>
+    <Paper sx={{ p: 2, position: 'fixed', minWidth: 350 }} elevation={3}>
       <Typography variant="h6" fontWeight="bold">
         Shopping Summary
       </Typography>
@@ -26,7 +19,7 @@ const ShoppingSummary = ({ setAlert }) => {
         <Typography>{rupiah(totalItemPrice)}</Typography>
       </Box>
       <Divider />
-      <Box display="flex" flexDirection="row" justifyContent="space-between" marginTop={2}>
+      <Box marginTop={2} display="flex" justifyContent="space-between">
         <Typography variant="h6" fontWeight="bold">
           Grand Total
         </Typography>

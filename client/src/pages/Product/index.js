@@ -14,7 +14,7 @@ const Product = () => {
   return (
     <>
       <NavBar position="relative" color="inherit" searchBar />
-      <Container maxWidth="xl" sx={{ mt: 4, minHeight: 700 }}>
+      <Container maxWidth="xl" sx={{ mt: 4, minHeight: '100vh' }}>
         <CategoryCards />
       </Container>
       <Footer />

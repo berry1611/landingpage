@@ -55,8 +55,8 @@ const ShoppingCart = ({ sx }) => {
         <Grid container direction="column">
           <Grid item>
             <Box display="flex" alignItems="center" paddingX={2} paddingY={1}>
-              <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>{`Cart(${cart.length ? cart.map((item) => item.quantity).reduce((curr, acc) => curr + acc) : 0})`}</Typography>
-              <Button component={Link} to="/cart" variant="contained" size="small" sx={{ ml: 'auto', borderRadius: 5, textTransform: 'capitalize' }}>
+              <Typography sx={{ color: 'black', fontWeight: 'bold' }}>{`Cart(${cart.length ? cart.map((item) => item.quantity).reduce((curr, acc) => curr + acc) : 0})`}</Typography>
+              <Button component={Link} to="/cart" size="small" sx={{ ml: 'auto', textTransform: 'capitalize' }}>
                 View Cart
               </Button>
             </Box>

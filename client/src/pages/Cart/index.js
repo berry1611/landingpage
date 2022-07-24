@@ -39,8 +39,8 @@ const Cart = () => {
         {!cart.length ? (
           <>
             <Typography variant="h5">Your Cart is Empty</Typography>
-            <Button component={Link} to="/product" size="small" variant="contained" sx={{ textTransform: 'capitalize', mt: 3 }}>
-              Go to Product Page
+            <Button component={Link} to="/product" variant="contained" sx={{ color: 'white', fontWeight: 'bold', textTransform: 'capitalize', borderRadius: 3, mt: 3 }}>
+              Shop now
             </Button>
           </>
         ) : (

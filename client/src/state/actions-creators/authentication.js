@@ -16,7 +16,7 @@ export const register = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await api.register(formData);
     dispatch({ type: REGISTER, payload: data });
-    navigate('/');
+    navigate(-1);
   } catch (error) {
     dispatch(errorAction(FETCH_ERROR, error));
   }

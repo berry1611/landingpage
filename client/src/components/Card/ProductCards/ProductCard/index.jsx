@@ -5,14 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles';
 import { addProductToCart } from '../../../../state/actions-creators/cart';
 import rupiah from '../../../../utils/rupiahCurrencyFormat';
+import { useNavigate } from 'react-router-dom';
+import { storageKey } from '../../../../constant/storageKey';
 
 const ProductCard = ({ product, highlight }) => {
   const { cart } = useSelector((state) => state.products);
-  const cartQuantity = cart.find((item) => item._id === product._id)?.quantity;
+  const user = JSON.parse(localStorage.getItem(storageKey.USER_INFO));
+  const cartQuantity = cart.find((item) => item.productId === product._id)?.quantity;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleBuyProduct = () => {
-    dispatch(addProductToCart(product));
+    if (!user) {
+      navigate('/login');
+    } else {
+      dispatch(addProductToCart(product));
+    }
   };
 
   return (

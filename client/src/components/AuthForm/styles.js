@@ -1,6 +1,7 @@
 const ButtonSubmit = {
   px: 5,
   borderRadius: 5,
+  color: 'white',
 };
 
 const formGrid = {

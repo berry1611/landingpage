@@ -4,7 +4,7 @@ const authentication = (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
-    if (!token) return res.status(401).json({ message: 'Unauthorized', data: null });
+    if (!token) return res.status(401).json({ message: 'Unauthorized' });
     const isCustomToken = token.length < 500;
     let decodedToken;
     if (isCustomToken) {

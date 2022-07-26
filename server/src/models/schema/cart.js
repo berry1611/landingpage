@@ -15,6 +15,8 @@ const cartSchema = mongoose.Schema(
         return this.price * this.quantity;
       },
     },
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   { timestamps: true }
 );

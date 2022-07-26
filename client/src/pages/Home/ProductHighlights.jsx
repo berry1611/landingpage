@@ -13,7 +13,7 @@ const ProductHighlights = () => {
         </Typography>
         <ProductHighlightCarousel column={3} />
         <Box sx={{ textAlign: 'center', mt: 3 }}>
-          <Button component={Link} to="/product" variant="contained" sx={{ borderRadius: 5 }}>
+          <Button component={Link} to="/product" variant="contained" sx={{ borderRadius: 5, color: 'white', textTransform: 'capitalize' }}>
             Visit Product Store
           </Button>
         </Box>

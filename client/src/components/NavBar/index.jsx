@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar, IconButton, Grid } from '@mui/material';
+import { AppBar, Box, Container, Toolbar, Typography, Button, Divider, Avatar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../../assets/icons/logo.svg';
 import { LOGOUT } from '../../state/action-types';
@@ -9,9 +9,10 @@ import styles from './styles';
 import MenuDrawer from './MenuDrawer';
 import SearchBar from '../SearchBar';
 import ShoppingCart from '../ShoppingCart';
+import { storageKey } from '../../constant/storageKey';
 
 const NavBar = ({ position, color, searchBar, storeLogo, sx }) => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem(storageKey.USER_INFO)));
   const [openDrawer, setOpenDrawer] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();

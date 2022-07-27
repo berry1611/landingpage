@@ -72,11 +72,11 @@ const ShoppingCart = ({ sx }) => {
             <Grid item>
               <Grid container spacing={3} paddingY={1} paddingX={2} justifyContent="flex-start">
                 <Grid item xs={4} sm="auto">
-                  <Box component="img" src={item.imageUrl} height={70} width={70} />
+                  <Box component="img" src={item.productId.imageUrl} height={70} width={70} />
                 </Grid>
                 <Grid item xs={4} sm="auto">
-                  <Typography noWrap>{item.name}</Typography>
-                  <Typography noWrap>{item.code}</Typography>
+                  <Typography noWrap>{item.productId.name}</Typography>
+                  <Typography noWrap>{item.productId.code}</Typography>
                   <Typography variant="body2" sx={{ color: 'info.light', fontWeight: 'bold' }}>
                     {`x${item.quantity}`}
                   </Typography>

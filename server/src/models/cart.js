@@ -1,5 +1,14 @@
 import mongoose from 'mongoose';
-import cartSchema from './schema/cart.js';
+
+const cartSchema = mongoose.Schema(
+  {
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    quantity: { type: Number, default: 1 },
+    subTotal: { type: Number },
+  },
+  { timestamps: true }
+);
 
 const Cart = mongoose.model('Cart', cartSchema);
 

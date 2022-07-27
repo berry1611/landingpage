@@ -11,7 +11,7 @@ import { storageKey } from '../../../../constant/storageKey';
 const ProductCard = ({ product, highlight }) => {
   const { cart } = useSelector((state) => state.products);
   const user = JSON.parse(localStorage.getItem(storageKey.USER_INFO));
-  const cartQuantity = cart.find((item) => item.productId === product._id)?.quantity;
+  const cartQuantity = cart.find((item) => item.productId._id === product._id)?.quantity;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

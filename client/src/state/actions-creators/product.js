@@ -1,19 +1,19 @@
 import * as api from '../../api';
-import { FETCH_ALL_PRODUCTS, FETCH_PRODUCTS_BY_NAME } from '../action-types';
+import { FETCH_ALL_PRODUCTS, FETCH_PRODUCTS_CATEGORY } from '../action-types';
 
-export const getProducts = (limit) => async (dispatch) => {
+export const getProducts = (name, page) => async (dispatch) => {
   try {
-    const { data } = await api.fetchProducts(limit);
+    const { data } = await api.fetchProducts(name, page);
     dispatch({ type: FETCH_ALL_PRODUCTS, payload: data });
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getProductsByName = (name) => async (dispatch) => {
+export const getProductsCategory = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchProductsByName(name);
-    dispatch({ type: FETCH_PRODUCTS_BY_NAME, payload: data });
+    const { data } = await api.fetchProductsCategory();
+    dispatch({ type: FETCH_PRODUCTS_CATEGORY, payload: data });
   } catch (error) {
     console.log(error);
   }

@@ -48,8 +48,7 @@ const Cart = () => {
             <Grid container spacing={3}>
               <Grid item xs={12} md={8}>
                 {cart.length ? (
-                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <Typography>Selected Product</Typography>
+                  <Box sx={{ display: 'flex', justifyContent: 'right' }}>
                     <Button onClick={handleClearCart} sx={{ ml: 'auto', textTransform: 'capitalize' }}>
                       Remove All
                     </Button>

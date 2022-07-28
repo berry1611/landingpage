@@ -12,8 +12,8 @@ API.interceptors.request.use((req) => {
 });
 
 // Product
-export const fetchProducts = (limit) => API.get(`/product?limit=${limit}`);
-export const fetchProductsByName = (name) => API.get(`/product?name=${name}`);
+export const fetchProducts = (name, page) => API.get(`/product?name=${name}&page=${page}`);
+export const fetchProductsCategory = () => API.get('/product/category');
 
 // Cart
 export const fetchCart = () => API.get('/cart');

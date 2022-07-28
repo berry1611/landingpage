@@ -4,16 +4,12 @@ import Footer from '../Footer';
 import ProductCards from '../Card/ProductCards';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Box, Button, Container, Divider, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { getProductsByName } from '../../state/actions-creators/product';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import Paginate from '../Paginate';
 
 const ProductCategory = ({ name }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProductsByName(name));
-  }, []);
+  const [query, setQuery] = useSearchParams();
+  const page = query.get('page') || 1;
 
   return (
     <>
@@ -29,6 +25,12 @@ const ProductCategory = ({ name }) => {
         </Box>
         <Divider orientation="horizontal" variant="fullWidth" sx={{ mb: 3, bgcolor: 'black' }} />
         <ProductCards />
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, justifyContent: 'center', my: 6 }}>
+          <Paginate name={name} page={page} size="medium" />
+        </Box>
+        <Box sx={{ display: { xs: 'flex', sm: 'none' }, justifyContent: 'center', my: 6 }}>
+          <Paginate name={name} page={page} size="small" />
+        </Box>
       </Container>
       <Footer />
     </>

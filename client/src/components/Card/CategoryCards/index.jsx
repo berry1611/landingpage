@@ -8,11 +8,12 @@ const cardColor = ['blue', 'orange', 'yellow', 'red', 'green', 'purple'];
 
 const CategoryCards = () => {
   const { products } = useSelector((state) => state.products);
+
   const productProperties = products
     .map((product) => product.name)
     .filter((product, index, self) => self.indexOf(product) === index)
     .map((name) => {
-      return { name, href: `/product/${convertToCamelCase(name)}` };
+      return { name, href: `/product/${convertToCamelCase(name)}?page=1` };
     });
 
   const displayProducts = (productProperties, cardColor) => {

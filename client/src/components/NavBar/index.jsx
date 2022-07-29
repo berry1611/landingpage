@@ -28,7 +28,7 @@ const NavBar = ({ position, color, searchBar, storeLogo, sx }) => {
   };
 
   return (
-    <AppBar position={position} color={color} elevation={0} sx={{ ...sx }}>
+    <AppBar position={position} color={color} elevation={0} sx={{ ...sx, pt: 1 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">{!storeLogo ? <Box component="img" src={Logo} height={100} width={200} sx={{ display: { xs: 'none', md: 'flex' } }} /> : <Box component="img" src={Logo} height={100} width={200} />}</Link>

@@ -24,7 +24,7 @@ const SearchBar = ({ color, variant = 'outlined', sx, fullWidth }) => {
   const handleSearchKeyword = () => {
     if (keyword.trim()) {
       dispatch(searchProducts(keyword));
-      navigate(`/product/search?keyword=${keyword}`);
+      navigate(`/product/search?keyword=${keyword}&page=1`);
     } else {
       navigate('/product');
     }

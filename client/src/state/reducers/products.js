@@ -8,9 +8,9 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL_PRODUCTS:
+    case SEARCH_PRODUCTS:
       return { ...state, products: action.payload.data, currentPage: action.payload.currentPage, numberOfPages: action.payload.numberOfPages };
     case FETCH_PRODUCTS_CATEGORY:
-    case SEARCH_PRODUCTS:
       return { ...state, products: action.payload.data };
     case FETCH_CART:
       return { ...state, cart: action.payload.data };

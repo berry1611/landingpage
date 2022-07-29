@@ -19,9 +19,9 @@ export const getProductsCategory = () => async (dispatch) => {
   }
 };
 
-export const searchProducts = (keyword) => async (dispatch) => {
+export const searchProducts = (keyword, page) => async (dispatch) => {
   try {
-    const { data } = await api.searchProducts(keyword);
+    const { data } = await api.searchProducts(keyword, page);
     dispatch({ type: SEARCH_PRODUCTS, payload: data });
   } catch (error) {
     console.log(error);

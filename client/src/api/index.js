@@ -14,7 +14,7 @@ API.interceptors.request.use((req) => {
 // Product
 export const fetchProducts = (name, page) => API.get(`/product?name=${name}&page=${page}`);
 export const fetchProductsCategory = () => API.get('/product/category');
-export const searchProducts = (keyword) => API.get(`/product/search?keyword=${keyword}`);
+export const searchProducts = (keyword, page) => API.get(`/product/search?keyword=${keyword}&page=${page}`);
 
 // Cart
 export const fetchCart = () => API.get('/cart');

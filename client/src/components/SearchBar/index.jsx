@@ -34,7 +34,7 @@ const SearchBar = ({ color, variant = 'outlined', sx, fullWidth }) => {
     <TextField
       variant={variant}
       color={color}
-      label="Search"
+      placeholder="Search"
       size="small"
       fullWidth={fullWidth}
       value={keyword}

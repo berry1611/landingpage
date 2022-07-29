@@ -3,3 +3,4 @@ export const ERROR_PARAMS_EMAIL = 'email';
 export const ERROR_PARAMS_PASSWORD = 'password';
 export const ERROR_PARAMS_NAME = 'name';
 export const ERROR_PARAMS_CONFIRM_PASSWORD = 'confirmPassword';
+export const ERROR_SEARCH_PRODUCTS = 'searchProducts';

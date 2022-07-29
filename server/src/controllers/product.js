@@ -26,3 +26,16 @@ export const getProductsCategory = async (req, res) => {
     res.status(404).json({ message: 'Data not found' });
   }
 };
+
+export const searchProducts = async (req, res) => {
+  try {
+    const { keyword } = req.query;
+
+    const result = await Product.find({ $or: [{ name: new RegExp(keyword, 'i') }, { code: new RegExp(keyword, 'i') }, { color: new RegExp(keyword, 'i') }] });
+
+    res.status(200).json({ data: result });
+  } catch (error) {
+    res.status(500).json({ message: `Internal server error` });
+    console.log(error);
+  }
+};
